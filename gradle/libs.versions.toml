@@ -1,24 +1,65 @@
 [versions]
-# The latest versions are available at https://lambdaurora.dev/tools/import_quilt.html
 minecraft = "1.20.1"
 loom = "1.8.5"
-
 quilt_mappings = "1.20.1+build.23"
 quilt_loader = "0.26.4"
-
 quilted_fabric_api = "7.6.0+0.92.2-1.20.1"
+
+# APIs
+geckolib = "4.4.6"
+geckolib_mclib = "20"
+trinkets = "3.7.1"
+arathain_lodestone = "0.0.4+1.20.1"
+midnightlib = "1.4.1-quilt"
+cca = "5.2.2"
+
+# Compat
+cloth_config = "11.1.118"
+rei = "12.0.684"
+mod_menu = "7.1.0"
+
+# Dev env
+sodium = "mc1.20.1-0.5.11"
+lithium = "mc1.20.1-0.11.2"
+iris = "1.7.2+1.20.1"
+authme = "7.0.2+1.20"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
 quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loader" }
-
 quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted_fabric_api" }
 quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
 
-# If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
+# APIs
+geckolib = { module = "software.bernie.geckolib:geckolib-fabric-1.20.1", version.ref = "geckolib" }
+geckolib_mclib = { module = "com.eliotlash.mclib:mclib", version.ref = "geckolib_mclib" }
+trinkets = { module = "dev.emi:trinkets", version.ref = "trinkets" }
+arathain_lodestone = { module = "team.lodestar.lodestone:LodestoneLib-Quilt", version.ref = "arathain_lodestone" }
+midnightlib = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib" }
+cca_base = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-base", version.ref = "cca" }
+cca_entity = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-entity", version.ref = "cca" }
+cca_world = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-world", version.ref = "cca" }
+
+# Compat
+cloth_config = { module = "me.shedaniel.cloth:cloth-config-fabric", version.ref = "cloth_config" }
+rei = { module = "me.shedaniel:RoughlyEnoughItems-fabric", version.ref = "rei" }
+rei_plugin = { module = "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric", version.ref = "rei" }
+mod_menu = { module = "com.terraformersmc:modmenu", version.ref = "mod_menu" }
+
+# Dev env
+sodium = { module = "maven.modrinth:sodium", version.ref = "sodium" }
+lithium = { module = "maven.modrinth:lithium", version.ref = "lithium" }
+iris = { module = "maven.modrinth:iris", version.ref = "iris" }
+authme = { module = "maven.modrinth:auth-me", version.ref = "authme" }
+
 [bundles]
 quilted_fabric_api = ["quilted_fabric_api", "quilted_fabric_api_deprecated"]
+cca = ["cca_base", "cca_entity", "cca_world"]
+
+rei = ["rei", "rei_plugin"]
+
+devenv = ["sodium", "lithium", "iris", "authme"]
 
 [plugins]
 quilt_loom = { id = "org.quiltmc.loom", version.ref = "loom" }
